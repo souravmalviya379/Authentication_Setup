@@ -1,0 +1,26 @@
+form{
+    width: 60%;
+    margin: auto;
+    margin-top: 3rem;
+    background: linear-gradient(rgb(247, 212, 148), rgb(238, 178, 238));
+    padding: 1rem;
+    border-radius: 20px;
+
+    input, button{
+        display: block;
+        border-radius: 10px;
+        padding: 7px;
+        color: darkgrey;
+    }
+    input{
+        width: 90%;
+        margin: 15px auto;
+        height: 2rem;
+        font-size: 1.3rem;
+    }
+    button{
+        width: 20%;
+        margin: 15px auto;
+        font-size: 1.5rem;
+    }
+}

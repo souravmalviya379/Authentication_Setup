@@ -1,0 +1,21 @@
+form {
+  width: 60%;
+  margin: auto;
+  margin-top: 3rem;
+  background: linear-gradient(#f7d494, #eeb2ee);
+  padding: 1rem;
+  border-radius: 20px; }
+  form input, form button {
+    display: block;
+    border-radius: 10px;
+    padding: 7px;
+    color: darkgrey; }
+  form input {
+    width: 90%;
+    margin: 15px auto;
+    height: 2rem;
+    font-size: 1.3rem; }
+  form button {
+    width: 20%;
+    margin: 15px auto;
+    font-size: 1.5rem; }
