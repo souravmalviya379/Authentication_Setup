@@ -8,6 +8,12 @@ const env = require('./config/environment');
 const bodyParser = require('body-parser');
 const expressLayouts = require('express-ejs-layouts');
 const flash = require('connect-flash');
+const session = require('express-session');
+const passport = require('passport');
+const passportLocal = require('./config/passport-local-strategy');
+const passportGoogle = require('./config/passport-google-oauth2-strategy');
+const MongoStore = require('connect-mongo');
+const flashMiddleware = require('./config/flashMiddleware');
 
 
 app.use(sassMiddleware({
@@ -29,6 +35,33 @@ app.set('layout extractScripts', true);
 //setting up the view engine
 app.set('view engine', 'ejs');
 app.set('views', './views');
+
+app.use(session({
+    name: 'Auth',
+    secret: env.session_cookie_key,
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+        maxAge: (1000* 60 * 100)
+    }, 
+    store: MongoStore.create(
+        {
+            mongoUrl: "mongodb://localhost:27017/Authentication",
+            autoRemove: 'disabled'
+        },
+        function(err){
+            console.log(err || 'connect-mongo setup successful!!');
+        }
+    )
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(passport.setAuthenticatedUser);
+
+app.use(flash());
+app.use(flashMiddleware.setFlash);
 
 app.use('/', require('./routes'));
 
