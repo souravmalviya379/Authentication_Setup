@@ -1,10 +1,10 @@
+const env = require('./config/environment');
 const express = require('express');
 const app = express();
-const port = 8000;
+const port = env.port;
 const db = require('./config/mongoose');
 const sassMiddleware = require('node-sass-middleware');
 const path = require('path');
-const env = require('./config/environment');
 const bodyParser = require('body-parser');
 const expressLayouts = require('express-ejs-layouts');
 const flash = require('connect-flash');
@@ -46,7 +46,7 @@ app.use(session({
     }, 
     store: MongoStore.create(
         {
-            mongoUrl: "mongodb://localhost:27017/Authentication",
+            mongoUrl: "mongodb://localhost:27017/"+env.db,
             autoRemove: 'disabled'
         },
         function(err){

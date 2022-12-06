@@ -1,15 +1,24 @@
 const development = {
     name: 'development',
+    db: process.env.AUTHENTICATION_DB,
+    port: process.env.AUTHENTICATION_PORT,
     asset_path: '/assets',
-    session_cookie_key: "mijJxAPux7XR6WdLjSCZfJNMncMAHbeX",
-    google_client_id: "242513002531-rm46u114ncag3vddgf2f23p1opqjkrq8.apps.googleusercontent.com",
-    google_client_secret: "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",
-    google_callback_url: "http://127.0.0.1:8000/users/auth/google/callback"
+    session_cookie_key: process.env.AUTHENTICATION_SESSION_COOKIE_KEY,
+    google_client_id: process.env.AUTHENTICATION_GOOGLE_CLIENT_ID,
+    google_client_secret: process.env.AUTHENTICATION_GOOGLE_CLIENT_SECRET,
+    google_callback_url: process.env.AUTHENTICATION_GOOGLE_CALLBACK_URL
 }
 
 const production = {
     name: 'production',
-    asset_path: process.env.ASSET_PATH
+    db: process.env.AUTHENTICATION_DB,
+    port: process.env.AUTHENTICATION_PORT,
+    asset_path: process.env.ASSET_PATH,
+    session_cookie_key: process.env.AUTHENTICATION_SESSION_COOKIE_KEY,
+    google_client_id: process.env.AUTHENTICATION_GOOGLE_CLIENT_ID,
+    google_client_secret: process.env.AUTHENTICATION_GOOGLE_CLIENT_SECRET,
+    google_callback_url: process.env.AUTHENTICATION_GOOGLE_CALLBACK_URL
+    
 }
 
-module.exports = development;
+module.exports = production;
